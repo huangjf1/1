@@ -220,7 +220,8 @@ export default {
    flex-direction: column;
    background: #E5E5E5;
    .backIcon {
-     width: 15px;
+     width: 24px;
+     height: 24px;
    }
    .my-swipe {
       flex: 1;
