@@ -106,7 +106,7 @@
               </div>
             </div>
           </div>
-          <div class="btn" @click="next" v-show="list.some(item => item.check === true)"></div>
+          <div class="btn btn-success" @click="next" v-show="list.some(item => item.check === true)"></div>
           <div class="btn-gray" v-show="!list.some(item => item.check === true)"></div>
         </van-swipe-item>
       </van-swipe>
@@ -431,6 +431,10 @@ export default {
         background-size: 100% 100%;
         cursor: pointer;
         margin: 0 auto 20px;
+      }
+      .btn-success {
+        background: url('../assets/image/success.png') no-repeat;
+        background-size: 100% 100%;
       }
       .btn-gray {
         width: 335px;
