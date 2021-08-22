@@ -54,6 +54,7 @@
               @click="showPicker = true"
               arrow-direction='down'
               input-align='center'
+              :border='false'
             />
             <div class="age-desc">我们会根据孩子不同的年龄推荐相应的体验课程</div>
             <van-popup v-model:show="showPicker" round position="bottom">
@@ -62,8 +63,8 @@
                 :columns="columns"
                 @cancel="showPicker = false"
                 @confirm="onConfirm"
-                title="年龄选择"
                 confirm-button-text="确定"
+                confirm-color='red'
               />
             </van-popup>
           </div>
@@ -84,11 +85,11 @@
               </div>
               <div @click="selectChines!=2?selectChines=2:selectChines=null" class="select-list" :class="selectChines==2?'current-select-list':''">
                 <p>学过</p>
-                <p>0-6个月</p>
+                <p>6-12个月</p>
               </div>
               <div @click="selectChines!=3?selectChines=3:selectChines=null" class="select-list" :class="selectChines==3?'current-select-list':''">
                 <p>学过</p>
-                <p>0-6个月</p>
+                <p>超过一年</p>
               </div>
             </div>
           </div>
@@ -336,10 +337,9 @@ export default {
         display: flex;
         flex-direction: column;
         .select-age {
-          width: 375px;
+          width: 335px;
           flex: 1;
           margin: 0 auto;
-          padding: 0 15px;
           >p{
             color: #344356;
             font-size: 20px;
@@ -361,15 +361,18 @@ export default {
           .van-field {
             border-radius: 5px;
           }
-          /deep/.van-popup--bottom {
+          /deep/ .van-popup--bottom {
             width: 375px;
             left: 0;
             right: 0;
             margin: auto;
             bottom: 0;
           }
-          /deep/.van-picker__toolbar {
+          /deep/ .van-picker__toolbar {
             color: gray;
+          }
+          /deep/ .van-picker__confirm {
+            color: #344356
           }
         }
       }
