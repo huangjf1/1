@@ -11,66 +11,10 @@
       <div :class="initIndex>=1?'currentTab':''"></div>
       <div :class="initIndex>=2?'currentTab':''"></div>
       <div :class="initIndex>=3?'currentTab':''"></div>
-      <div :class="initIndex==4?'currentTab':''"></div>
+      <!-- <div :class="initIndex==4?'currentTab':''"></div> -->
     </div>
     <div class="my-swipe">
       <van-swipe ref="swipe"  indicator-color="transparent" :touchable="false">
-        <!-- 输入昵称 -->
-        <van-swipe-item class="pageOne">
-          <div class="pageOneDesc">
-            <img class="avatar" src="@/assets/image/avatar.jpg">
-            <div class="nameDesc">点击输入宝贝昵称</div>
-            <input @input="changeText" v-model="name" type="text" placeholder="请输入">
-            <div class="message" :class="firstShow?'messageColor':''">最多14个英文字符或7个汉字</div>
-          </div>
-          <div class="btn" @click="next(1)" v-show="!firstShow"></div>
-          <div class="btn-gray" v-show="firstShow"></div>
-        </van-swipe-item>
-        <!-- 选择性别 -->
-        <van-swipe-item class="pageTwo">
-          <div class="selectSex">
-            <div class="man" @click="selectSex!=1?selectSex=1:selectSex=''">
-              <img class="manImg" src="@/assets/image/man.png">
-              <img class="checkImg" v-show="selectSex==1" src="@/assets/image/checked.png">
-            </div>
-            <div class="andText">或</div>
-            <div class="woman" @click="selectSex!=2?selectSex=2:selectSex=''">
-              <img class="womanImg" src="@/assets/image/woman.png">
-              <img class="checkImg" v-show="selectSex==2" src="@/assets/image/checked.png">
-            </div>
-          </div>
-          <div class="btn" @click="next(2)" v-show="selectSex!=''"></div>
-          <div class="btn-gray" v-show="selectSex==''"></div>
-        </van-swipe-item>
-        <!-- 选择出生年月 -->
-        <van-swipe-item class="pageThree">
-          <div class="select-age">
-            <p>宝贝哪年出生?</p>
-            <van-field
-              v-model="result"
-              is-link
-              readonly
-              placeholder="请选择"
-              @click="showPicker = true"
-              arrow-direction='down'
-              input-align='center'
-              :border='false'
-            />
-            <div class="age-desc">我们会根据孩子不同的年龄推荐相应的体验课程</div>
-            <van-popup v-model:show="showPicker" round position="bottom">
-              <van-picker
-                show-toolbar
-                :columns="columns"
-                @cancel="showPicker = false"
-                @confirm="onConfirm"
-                confirm-button-text="确定"
-                confirm-color='red'
-              />
-            </van-popup>
-          </div>
-          <div class="btn" @click="next(3)" v-show="result"></div>
-          <div class="btn-gray" v-show="!result"></div>
-        </van-swipe-item>
         <!-- 是否有中文基础 -->
         <van-swipe-item class="pageFour">
           <div class="select-chines">
@@ -93,7 +37,7 @@
               </div>
             </div>
           </div>
-          <div class="btn" @click="next(4)" v-show="selectChines!=null"></div>
+          <div class="btn" @click="next(1)" v-show="selectChines!=null"></div>
           <div class="btn-gray" v-show="selectChines==null"></div>
         </van-swipe-item>
         <!-- 学习中文的侧重点 -->
@@ -106,11 +50,68 @@
               </div>
             </div>
           </div>
-          <div class="btn btn-success" @click="next" v-show="list.some(item => item.check === true)"></div>
+          <div class="btn" @click="next(2)" v-show="list.some(item => item.check === true)"></div>
           <div class="btn-gray" v-show="!list.some(item => item.check === true)"></div>
         </van-swipe-item>
+        <!-- 选择出生年月 -->
+        <van-swipe-item class="pageThree">
+          <div class="select-age">
+            <p>宝贝哪年出生?</p>
+            <van-field
+              v-model="result"
+              is-link
+              readonly
+              placeholder="请选择"
+              @click="showPicker = true"
+              arrow-direction='down'
+              input-align='center'
+              :border='false'
+            />
+            <div class="age-desc">我们会根据孩子不同的年龄推荐相应的体验课程</div>
+            
+          </div>
+          <div class="btn" @click="next(3)" v-show="result"></div>
+          <div class="btn-gray" v-show="!result"></div>
+        </van-swipe-item>
+        <!-- 输入昵称 -->
+        <van-swipe-item class="pageOne">
+          <div class="pageOneDesc">
+            <img class="avatar" src="@/assets/image/avatar.png">
+            <div class="nameDesc">点击输入宝贝昵称</div>
+            <input @input="changeText" v-model="name" type="text" placeholder="请输入">
+            <div class="message" :class="firstShow?'messageColor':''">最多14个英文字符或7个汉字</div>
+          </div>
+          <div class="btn btn-success" v-show="!firstShow"></div>
+          <div class="btn-gray" v-show="firstShow"></div>
+        </van-swipe-item>
+        <!-- 选择性别 -->
+        <!-- <van-swipe-item class="pageTwo">
+          <div class="selectSex">
+            <div class="man" @click="selectSex!=1?selectSex=1:selectSex=''">
+              <img class="manImg" src="@/assets/image/man.png">
+              <img class="checkImg" v-show="selectSex==1" src="@/assets/image/checked.png">
+            </div>
+            <div class="andText">或</div>
+            <div class="woman" @click="selectSex!=2?selectSex=2:selectSex=''">
+              <img class="womanImg" src="@/assets/image/woman.png">
+              <img class="checkImg" v-show="selectSex==2" src="@/assets/image/checked.png">
+            </div>
+          </div>
+          <div class="btn" @click="next(2)" v-show="selectSex!=''"></div>
+          <div class="btn-gray" v-show="selectSex==''"></div>
+        </van-swipe-item> -->
       </van-swipe>
     </div>
+    <van-popup v-model:show="showPicker" round position="bottom">
+      <van-picker
+        show-toolbar
+        :columns="columns"
+        @cancel="showPicker = false"
+        @confirm="onConfirm"
+        confirm-button-text="确定"
+        confirm-color='red'
+      />
+    </van-popup>
   </div>
 </template>
 <script>
@@ -126,30 +127,15 @@ export default {
     let swipe = ref('')
     let firstShow = ref(true)
     let selectSex = ref('')
-    const columns = [
-      { text: '2000'},
-      { text: '2001' },
-      { text: '2002' },
-      { text: '2003'},
-      { text: '2004' },
-      { text: '2005' },
-      { text: '2006'},
-      { text: '2007' },
-      { text: '2008' },
-      { text: '2009'},
-      { text: '2010' },
-      { text: '2011' },
-      { text: '2012'},
-      { text: '2013' },
-      { text: '2014' },
-      { text: '2015'},
-      { text: '2016' },
-      { text: '2017' },
-      { text: '2018'},
-      { text: '2019' },
-      { text: '2020' },
-      { text: '2021' }
-    ];
+    let date = new Date()
+    let year = date.getFullYear()
+    console.log(year)
+    const columns = []
+    for (var i = 2000;i<=year;i++){
+      columns.unshift({
+        text: i
+      })
+    }
     // 侧重点列表
     const list = ref([
       { text: '拼音', check: false },
@@ -218,7 +204,7 @@ export default {
    margin: 0 auto;
    display: flex;
    flex-direction: column;
-   background: #E5E5E5;
+   background: #f3f5f9;
    .backIcon {
      width: 24px;
      height: 24px;
@@ -247,7 +233,6 @@ export default {
           width: 100px;
           height: 100px;
           border-radius: 50%;
-          border: 5px solid white;
           box-shadow: 0px 12px 19px rgba(60, 128, 209, 0.0851449);
           margin-top: 80px;
         }
@@ -261,9 +246,10 @@ export default {
         }
         input {
           width: 335px;
-          height: 50px;
-          line-height: 50px;
+          height: 16px;
+          line-height: 16px;
           background: #FFFFFF;
+          padding: 17px 0;
           border-radius: 10px;
           border: none;
           outline: none;
