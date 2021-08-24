@@ -18,7 +18,7 @@
         <!-- 是否有中文基础 -->
         <van-swipe-item class="pageFour">
           <div class="select-chines">
-            <div class="message-info">欢迎来T-Lab!</div>
+            <div class="message-info">欢迎来到T-Lab!</div>
             <img class="avatar" src="@/assets/image/avatar.png">
             <p>宝贝是否有中文基础?</p>
             <div class="select-list-box">
@@ -281,9 +281,10 @@ export default {
         .nameDesc {
           text-align: center;
           color: #344356;
-          font-size: 16px;
-          font-weight: 600;
+          font-size: 20px;
           font-family: PingFang HK;
+          font-style: normal;
+          font-weight: 500;
           margin-top: 25px;
         }
         input {
@@ -432,14 +433,14 @@ export default {
             line-height: 28px;
             color: #344356;
             margin-top: 20px;
+            font-size: 20px;
           }
           .select-list-box {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
           }
           .select-list {
-            width: calc(50% - 35px);
+            width: calc(50% - 20px);
             height: 60px;
             display: flex;
             flex-direction: column;
@@ -461,8 +462,11 @@ export default {
               color: white;
             }
           }
+          .select-list:nth-of-type(odd) {
+            margin-left: 10px;
+          }
           .select-list:nth-of-type(even) {
-            margin-left: 15px;
+            margin-left: 20px;
           }
         }
       }
