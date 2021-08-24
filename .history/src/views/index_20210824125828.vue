@@ -236,18 +236,7 @@ export default {
    background: #f3f5f9;
    /deep/ .van-ellipsis {
      font-size: 14px;
-     font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
-   }
-   /deep/ .van-picker__confirm {
-     font-size: 14px !important;
-   }
-   /deep/ .van-picker__cancel {
-     font-size: 14px !important;
-   }
-   input::placeholder{
-     color:#D4DCE7;
-     font-size: 14px;
-     font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
+     font-family: PingFang HK;
    }
    .backIcon {
      width: 24px;
@@ -299,7 +288,6 @@ export default {
           text-align: center;
           margin-top: 19px;
           color: #344356;
-          font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
         }
         .message {
           color: #344356;
@@ -421,7 +409,7 @@ export default {
             font-style: normal;
             font-weight: 500;
             font-size: 14px;
-            line-height: 41px;
+            line-height: 40px;
             color: #344356;
           }
           >p {
@@ -445,7 +433,7 @@ export default {
             flex-direction: column;
             align-items: center;
             background: white;
-            font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
+            font-family: PingFang HK;
             font-style: normal;
             font-weight: 500;
             font-size: 16px;
@@ -461,6 +449,7 @@ export default {
               color: white;
             }
           }
+  
           .select-list:nth-of-type(even) {
             margin-left: 15px;
           }

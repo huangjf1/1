@@ -16,7 +16,7 @@ module.exports = {
       },
     },
     devServer: {
-      open: true,
+      open: false,
       proxy: {
         '/api': {
           target: 'https://id-beta.tlab.fun/', // 测试
@@ -25,6 +25,7 @@ module.exports = {
         }
       }
     },
+    productionSourceMap: false,
     configureWebpack: {
       resolve: {
         // 配置路径别名

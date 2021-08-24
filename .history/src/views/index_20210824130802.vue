@@ -421,7 +421,7 @@ export default {
             font-style: normal;
             font-weight: 500;
             font-size: 14px;
-            line-height: 41px;
+            line-height: 40px;
             color: #344356;
           }
           >p {

@@ -18,7 +18,6 @@
         <!-- 是否有中文基础 -->
         <van-swipe-item class="pageFour">
           <div class="select-chines">
-            <div class="message-info">欢迎来T-Lab!</div>
             <img class="avatar" src="@/assets/image/avatar.png">
             <p>宝贝是否有中文基础?</p>
             <div class="select-list-box">
@@ -39,14 +38,8 @@
               </div>
             </div>
           </div>
-          <div class="btn" @click="next(1)" v-show="selectChines!=null">
-            <span>下一步</span>
-            <img src="@/assets/image/next_green.png">
-          </div>
-          <div class="btn-gray" v-show="selectChines==null">
-            <span>下一步</span>
-            <img src="@/assets/image/next_gray.png">
-          </div>
+          <div class="btn" @click="next(1)" v-show="selectChines!=null"></div>
+          <div class="btn-gray" v-show="selectChines==null"></div>
         </van-swipe-item>
         <!-- 学习中文的侧重点 -->
         <van-swipe-item class="pageFour">
@@ -59,14 +52,8 @@
               </div>
             </div>
           </div>
-          <div class="btn" @click="next(2)" v-show="list.some(item => item.check === true)">
-            <span>下一步</span>
-            <img src="@/assets/image/next_green.png">
-          </div>
-          <div class="btn-gray" v-show="!list.some(item => item.check === true)">
-            <span>下一步</span>
-            <img src="@/assets/image/next_gray.png">
-          </div>
+          <div class="btn" @click="next(2)" v-show="list.some(item => item.check === true)"></div>
+          <div class="btn-gray" v-show="!list.some(item => item.check === true)"></div>
         </van-swipe-item>
         <!-- 选择出生年月 -->
         <van-swipe-item class="pageThree">
@@ -86,14 +73,8 @@
             <div class="age-desc">我们会根据孩子不同的年龄推荐相应的体验课程</div>
             
           </div>
-          <div class="btn" @click="next(3)" v-show="result">
-            <span>下一步</span>
-            <img src="@/assets/image/next_green.png">
-          </div>
-          <div class="btn-gray" v-show="!result">
-            <span>下一步</span>
-            <img src="@/assets/image/next_gray.png">
-          </div>
+          <div class="btn" @click="next(3)" v-show="result"></div>
+          <div class="btn-gray" v-show="!result"></div>
         </van-swipe-item>
         <!-- 输入昵称 -->
         <van-swipe-item class="pageOne">
@@ -103,14 +84,8 @@
             <input @input="changeText" v-model="name" type="text" placeholder="请输入">
             <div class="message" :class="firstShow?'messageColor':''">最多14个英文字符或7个汉字</div>
           </div>
-          <div class="btn btn-success" v-show="!firstShow">
-            <span>完成</span>
-            <img src="@/assets/image/next_green.png">
-          </div>
-          <div class="btn-gray" v-show="firstShow">
-            <span>完成</span>
-            <img src="@/assets/image/next_gray.png">
-          </div>
+          <div class="btn btn-success" v-show="!firstShow"></div>
+          <div class="btn-gray" v-show="firstShow"></div>
         </van-swipe-item>
         <!-- 选择性别 -->
         <!-- <van-swipe-item class="pageTwo">
@@ -231,24 +206,8 @@ export default {
    height: 100%;
    margin: 0 auto;
    display: flex;
-   overflow-y: auto;
    flex-direction: column;
    background: #f3f5f9;
-   /deep/ .van-ellipsis {
-     font-size: 14px;
-     font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
-   }
-   /deep/ .van-picker__confirm {
-     font-size: 14px !important;
-   }
-   /deep/ .van-picker__cancel {
-     font-size: 14px !important;
-   }
-   input::placeholder{
-     color:#D4DCE7;
-     font-size: 14px;
-     font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
-   }
    .backIcon {
      width: 24px;
      height: 24px;
@@ -272,10 +231,6 @@ export default {
         flex-direction: column;
         .pageOneDesc{
           flex: 1;
-          width: 100%;
-          min-width: 375px;
-          max-width: 650px;
-          margin: 0 auto;
         }
         
         .nameDesc {
@@ -287,7 +242,7 @@ export default {
           margin-top: 25px;
         }
         input {
-          width: calc(100% - 20px);
+          width: 335px;
           height: 16px;
           line-height: 16px;
           background: #FFFFFF;
@@ -299,7 +254,6 @@ export default {
           text-align: center;
           margin-top: 19px;
           color: #344356;
-          font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
         }
         .message {
           color: #344356;
@@ -367,15 +321,13 @@ export default {
         display: flex;
         flex-direction: column;
         .select-age {
-          width: 100%;
-          min-width: 375px;
-          max-width: 650px;
+          width: 335px;
           flex: 1;
           margin: 0 auto;
           >p{
             color: #344356;
             font-size: 20px;
-            margin-top: 20px;
+            margin-top: 90px;
             font-family: PingFang HK;
             font-style: normal;
             font-weight: 500;
@@ -393,37 +345,30 @@ export default {
           .van-field {
             border-radius: 5px;
           }
-         
+          /deep/ .van-popup--bottom {
+            width: 375px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 0;
+          }
+          /deep/ .van-picker__toolbar {
+            color: gray;
+          }
+          /deep/ .van-picker__confirm {
+            color: #344356
+          }
         }
       }
       .pageFour {
+        width: 375px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         .select-chines {
           flex: 1;
-          width: 100%;
-          min-width: 375px;
-          max-width: 670px;
+          width: 375px;
           margin: 0 auto;
-          position: relative;
-          .message-info {
-            width: 136px;
-            height: 52px;
-            position: absolute;
-            background: url('~@/assets/image/Union.png') no-repeat;
-            background-size: 100% 100%;
-            left: 0;
-            right: 0;
-            margin: auto;
-            top: 35px;
-            font-family: PingFang HK;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 41px;
-            color: #344356;
-          }
           >p {
             font-family: PingFang HK;
             font-style: normal;
@@ -431,7 +376,7 @@ export default {
             font-size: 20px;
             line-height: 28px;
             color: #344356;
-            margin-top: 20px;
+            margin-top: 90px;
           }
           .select-list-box {
             display: flex;
@@ -439,13 +384,13 @@ export default {
             justify-content: space-around;
           }
           .select-list {
-            width: calc(50% - 35px);
+            width: 160px;
             height: 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
             background: white;
-            font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
+            font-family: PingFang HK;
             font-style: normal;
             font-weight: 500;
             font-size: 16px;
@@ -461,9 +406,6 @@ export default {
               color: white;
             }
           }
-          .select-list:nth-of-type(even) {
-            margin-left: 15px;
-          }
         }
       }
       .avatar {
@@ -471,71 +413,31 @@ export default {
         height: 110px;
         border-radius: 50%;
         box-shadow: 0px 12px 19px rgba(60, 128, 209, 0.0851449);
-        margin-top: 70px;
+        margin-top: 20px;
       }
       .btn {
-        width: calc(100% - 40px);
-        min-width: 335px;
-        max-width: 650px;
+        width: 335px;
         height: 60px;
-        line-height: 60px;
-        background: #088384;
+        background: url('../assets/image/button.png') no-repeat;
         background-size: 100% 100%;
         cursor: pointer;
-        margin: 20px auto 20px;
-        border-radius: 10px;
-        font-family: Montserrat;
-        font-weight: bold;
-        font-size: 16px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #FFFFFF;
-        position: relative;
-        img {
-          width: 30px;
-          height: 30px;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          margin: auto;
-          right: 20px;
-        }
+        margin: 0 auto 20px;
       }
       .btn-success {
         background: url('../assets/image/success.png') no-repeat;
         background-size: 100% 100%;
       }
       .btn-gray {
-        width: calc(100% - 40px);
-        min-width: 335px;
-        max-width: 650px;
+        width: 335px;
         height: 60px;
-        text-align: center;
-        line-height: 60px;
+        background: url('../assets/image/button_gray.png') no-repeat;
+        background-size: 100% 100%;
         cursor: pointer;
-        background: #D4DCE7;
-        margin: 20px auto 20px;
-        border-radius: 10px;
-        font-family: Montserrat;
-        font-weight: bold;
-        font-size: 16px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        color: #FFFFFF;
-        position: relative;
-        img {
-          width: 30px;
-          height: 30px;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          margin: auto;
-          right: 20px;
-        }
+        margin: 0 auto 20px;
       }
    }
    .tabs {
-     width: 100%;
+     width: 375px;
      height: 4px;
      display: flex;
      justify-content: space-around;
@@ -545,7 +447,7 @@ export default {
        flex: 1;
        background: #D4DCE7;
        border-radius: 26px;
-       margin: 0 4px;
+       margin-left: 4px;
      }
      .currentTab {
        background: #00968E;

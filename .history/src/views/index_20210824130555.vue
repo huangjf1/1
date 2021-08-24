@@ -421,7 +421,7 @@ export default {
             font-style: normal;
             font-weight: 500;
             font-size: 14px;
-            line-height: 41px;
+            line-height: 40px;
             color: #344356;
           }
           >p {
@@ -445,7 +445,7 @@ export default {
             flex-direction: column;
             align-items: center;
             background: white;
-            font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
+            font-family: PingFang HK;
             font-style: normal;
             font-weight: 500;
             font-size: 16px;
