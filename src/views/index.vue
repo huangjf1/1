@@ -1,7 +1,7 @@
 
 <template>
   <div class="content">
-    <van-nav-bar title="信息完善" left-arrow @click-left="onClickLeft">
+    <van-nav-bar class="nav-bar" style="background:#f3f5f9" title="信息完善" left-arrow @click-left="onClickLeft">
       <template #left>
         <img class="backIcon" src="@/assets/image/back.png" alt="">
       </template>
@@ -14,9 +14,9 @@
       <!-- <div :class="initIndex==4?'currentTab':''"></div> -->
     </div>
     <div class="my-swipe">
-      <van-swipe ref="swipe"  indicator-color="transparent" :touchable="false">
+      <swipe ref="swipe">
         <!-- 是否有中文基础 -->
-        <van-swipe-item class="pageFour">
+        <swipe-item class="pageFour">
           <div class="select-chines">
             <div class="message-info">欢迎来到T-Lab!</div>
             <img class="avatar" src="@/assets/image/avatar.png">
@@ -47,9 +47,9 @@
             <span>下一步</span>
             <img src="@/assets/image/next_gray.png">
           </div>
-        </van-swipe-item>
+        </swipe-item>
         <!-- 学习中文的侧重点 -->
-        <van-swipe-item class="pageFour">
+        <swipe-item class="pageFour">
           <div class="select-chines">
             <img class="avatar" src="@/assets/image/avatar.png">
             <p>宝贝学习中文的侧重点? (可多选)</p>
@@ -67,9 +67,9 @@
             <span>下一步</span>
             <img src="@/assets/image/next_gray.png">
           </div>
-        </van-swipe-item>
+        </swipe-item>
         <!-- 选择出生年月 -->
-        <van-swipe-item class="pageThree">
+        <swipe-item class="pageThree">
           <div class="select-age">
             <img class="avatar" src="@/assets/image/avatar.png">
             <p>宝贝哪年出生?</p>
@@ -94,16 +94,16 @@
             <span>下一步</span>
             <img src="@/assets/image/next_gray.png">
           </div>
-        </van-swipe-item>
+        </swipe-item>
         <!-- 输入昵称 -->
-        <van-swipe-item class="pageOne">
+        <swipe-item class="pageOne">
           <div class="pageOneDesc">
             <img class="avatar" src="@/assets/image/avatar.png">
             <div class="nameDesc">点击输入宝贝昵称</div>
             <input @input="changeText" v-model="name" type="text" placeholder="请输入">
             <div class="message" :class="firstShow?'messageColor':''">最多14个英文字符或7个汉字</div>
           </div>
-          <div class="btn btn-success" v-show="!firstShow">
+          <div class="btn" v-show="!firstShow">
             <span>完成</span>
             <img src="@/assets/image/next_green.png">
           </div>
@@ -111,9 +111,9 @@
             <span>完成</span>
             <img src="@/assets/image/next_gray.png">
           </div>
-        </van-swipe-item>
+        </swipe-item>
         <!-- 选择性别 -->
-        <!-- <van-swipe-item class="pageTwo">
+        <!-- <swipe-item class="pageTwo">
           <div class="selectSex">
             <div class="man" @click="selectSex!=1?selectSex=1:selectSex=''">
               <img class="manImg" src="@/assets/image/man.png">
@@ -127,8 +127,8 @@
           </div>
           <div class="btn" @click="next(2)" v-show="selectSex!=''"></div>
           <div class="btn-gray" v-show="selectSex==''"></div>
-        </van-swipe-item> -->
-      </van-swipe>
+        </swipe-item> -->
+      </swipe>
     </div>
     <van-popup v-model:show="showPicker" round position="bottom">
       <van-picker
@@ -144,9 +144,12 @@
 </template>
 <script>
 import { ref, onMounted } from 'vue'
+import swipe from '@/components/swipe/swipe.vue'
+import swipeItem from '@/components/swipe/swipe-item.vue'
 export default {
   components: {
-    
+    swipe,
+    swipeItem
   },
   setup () {
     let initIndex = ref(0)
@@ -180,7 +183,7 @@ export default {
     // 返回
     const onClickLeft = () => {
       if (initIndex.value>0){
-        swipe.value.prev()
+        swipe.value.prePage()
         initIndex.value -= 1
       }
     }
@@ -198,7 +201,7 @@ export default {
     }
     const next = (index) => {
       if (initIndex.value<4){
-        swipe.value.next()
+        swipe.value.nextPage()
         initIndex.value = index
       }
     }
@@ -234,6 +237,9 @@ export default {
    overflow-y: auto;
    flex-direction: column;
    background: #f3f5f9;
+   /deep/.van-nav-bar__title {
+     font-size: 20px !important;
+   }
    /deep/ .van-ellipsis {
      font-size: 14px;
      font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
@@ -243,6 +249,12 @@ export default {
    }
    /deep/ .van-picker__cancel {
      font-size: 14px !important;
+   }
+   /deep/ .van-field {
+     width: 95%;
+     margin: 0 auto;
+     padding-top: 18px;
+     padding-bottom: 18px;
    }
    input::placeholder{
      color:#D4DCE7;
@@ -255,15 +267,15 @@ export default {
    }
    .my-swipe {
       flex: 1;
-      .van-swipe {
+      .swipe {
        height: 100%;
       }
-      .van-swipe-item {
+      .swipe-item {
        color: #fff;
        font-size: 20px;
        text-align: center;
       }
-      /deep/.van-swipe__indicators {
+      /deep/.swipe__indicators {
         display: none;
       }
       .pageOne {
@@ -298,6 +310,8 @@ export default {
           outline: none;
           font-size: 16px;
           text-align: center;
+          display: flex;
+          margin: 0 auto;
           margin-top: 19px;
           color: #344356;
           font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
@@ -306,6 +320,7 @@ export default {
           color: #344356;
           font-size: 14px;
           margin-top: 10px;
+          text-align: center;
           &.messageColor {
             color: #FF7044;
           }
@@ -373,6 +388,7 @@ export default {
           max-width: 650px;
           flex: 1;
           margin: 0 auto;
+          text-align: center;
           >p{
             color: #344356;
             font-size: 20px;
@@ -423,6 +439,7 @@ export default {
             font-weight: 500;
             font-size: 14px;
             line-height: 41px;
+            text-align: center;
             color: #344356;
           }
           >p {
@@ -434,6 +451,7 @@ export default {
             color: #344356;
             margin-top: 20px;
             font-size: 20px;
+            text-align: center;
           }
           .select-list-box {
             display: flex;
@@ -473,8 +491,10 @@ export default {
       .avatar {
         width: 110px;
         height: 110px;
+        display: block;
         border-radius: 50%;
         box-shadow: 0px 12px 19px rgba(60, 128, 209, 0.0851449);
+        margin: 0 auto;
         margin-top: 70px;
       }
       .btn {
@@ -495,6 +515,7 @@ export default {
         text-transform: uppercase;
         color: #FFFFFF;
         position: relative;
+        text-align: center;
         img {
           width: 30px;
           height: 30px;

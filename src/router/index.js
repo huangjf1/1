@@ -5,15 +5,18 @@ const router = createRouter({
     {
       path: '/',
       name: '/',
-      redirect: '/index'
+      redirect: '/test'
     },
     {
-    path: '/index',
-    name: 'index',
-    component: () => import('@/views/index.vue'),
-    meta: {
-      index: 1
+      path: '/index',
+      name: 'index',
+      component: () => import('@/views/index.vue'),
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import('@/views/test.vue'),
     }
-  },]
+  ]
 })
 export default router
