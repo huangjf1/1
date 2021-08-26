@@ -103,7 +103,7 @@
             <input @input="changeText" v-model="name" type="text" placeholder="请输入">
             <div class="message" :class="firstShow?'messageColor':''">最多14个英文字符或7个汉字</div>
           </div>
-          <div class="btn" v-show="!firstShow">
+          <div class="btn" v-show="!firstShow" @click="submit">
             <span>完成</span>
             <img src="@/assets/image/next_green.png">
           </div>
@@ -199,14 +199,48 @@ export default {
         firstShow.value = true
       }
     }
+    const getAccessToken = () => {
+      var _a, _b, _c, _d, _e;
+      var query = new URLSearchParams(document.location.search);
+      var token = (_b = (_a = query.get('at')) !== null && _a !== void 0 ? _a : query.get('access_token')) !== null && _b !== void 0 ? _b : '';
+      if (token) return token;
+      var nativeLoader = (_c = top._getLisaInitialData) !== null && _c !== void 0 ? _c : window._getLisaInitialData;
+      if (nativeLoader) {
+          return (_e = (_d = nativeLoader()) === null || _d === void 0 ? void 0 : _d.identityTokens) === null || _e === void 0 ? void 0 : _e.access_token;
+      }
+      else {
+          console.error('load token failed.')
+          return ''
+      }
+    }
+
     const next = (index) => {
       if (initIndex.value<4){
         swipe.value.nextPage()
         initIndex.value = index
       }
     }
+    const submit = () => {
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", getAccessToken());
+      var urlencoded = new URLSearchParams();
+      urlencoded.append("name", name.value);
+      urlencoded.append("gender", "");
+      urlencoded.append("chineseLearningExperience", selectChines.value);
+      urlencoded.append("birthDay", result.value);
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
+      fetch("https://id-beta.tlab.fun/api/account/profile", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
     onMounted (()=>{
-
+      console.log(getAccessToken())
     })
     return {
       initIndex,
@@ -223,7 +257,8 @@ export default {
       onClickLeft,
       onConfirm,
       selectList,
-      next
+      next,
+      submit
     }
   }
 }
