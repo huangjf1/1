@@ -237,24 +237,21 @@ export default {
    overflow-y: auto;
    flex-direction: column;
    background: #f3f5f9;
-   /deep/.van-nav-bar__title {
+   :deep(.van-nav-bar__title) {
      font-size: 20px !important;
    }
-   /deep/ .van-ellipsis {
+   :deep(.van-ellipsis) {
      font-size: 14px;
      font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
    }
-   /deep/ .van-picker__confirm {
+   :deep(.van-picker__confirm) {
      font-size: 14px !important;
    }
-   /deep/ .van-picker__cancel {
+   :deep(.van-picker__cancel) {
      font-size: 14px !important;
    }
-   /deep/ .van-field {
-     width: 95%;
-     margin: 0 auto;
-     padding-top: 18px;
-     padding-bottom: 18px;
+   :deep(.van-field) {
+     font-size: 14px !important;
    }
    input::placeholder{
      color:#D4DCE7;
@@ -274,9 +271,6 @@ export default {
        color: #fff;
        font-size: 20px;
        text-align: center;
-      }
-      /deep/.swipe__indicators {
-        display: none;
       }
       .pageOne {
         position: relative;

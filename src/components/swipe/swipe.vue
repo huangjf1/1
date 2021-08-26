@@ -48,15 +48,15 @@ export default {
       margin-left: 0;
       display: flex;
       transition: all 0.5s;
-      /deep/.carousel-list {
-       width: 100%;
-       height: 100%;
-       flex: none;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       font-size: 25px;
-       color: white;
+      :deep(.carousel-list) {
+        width: 100%;
+        height: 100%;
+        flex: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        color: white;
       }
     }
     .next {
