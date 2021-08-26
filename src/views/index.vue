@@ -252,6 +252,10 @@ export default {
    }
    :deep(.van-field) {
      font-size: 14px !important;
+     padding-top: 16px;
+     padding-bottom: 16px;
+     width: calc(100% - 30px);
+     margin: 0 auto;
    }
    input::placeholder{
      color:#D4DCE7;
