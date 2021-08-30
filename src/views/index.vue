@@ -1,11 +1,15 @@
 
 <template>
   <div class="content">
-    <van-nav-bar class="nav-bar" style="background:#f3f5f9" title="信息完善" left-arrow @click-left="onClickLeft">
+    <div class="nav-bar">
+      <img class="backIcon" src="@/assets/image/back.png">
+      <span>信息完善</span>
+    </div>
+    <!-- <van-nav-bar class="nav-bar" style="background:#f3f5f9" title="信息完善" left-arrow @click-left="onClickLeft">
       <template #left>
-        <img class="backIcon" src="@/assets/image/back.png" alt="">
+        <img class="backIcon" src="@/assets/image/back.png">
       </template>
-    </van-nav-bar>
+    </van-nav-bar> -->
     <div class="tabs">
       <div :class="initIndex>=0?'currentTab':''"></div>
       <div :class="initIndex>=1?'currentTab':''"></div>
@@ -272,6 +276,25 @@ export default {
    overflow-y: auto;
    flex-direction: column;
    background: #f3f5f9;
+   .nav-bar {
+      background: #f3f5f9;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      justify-content: center;
+      font-size: 20px;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+    .backIcon {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      left: 15px;
+      top: 8px;
+    }
+   }
    :deep(.van-nav-bar__title) {
      font-size: 20px !important;
    }
@@ -292,15 +315,18 @@ export default {
      width: calc(100% - 30px);
      margin: 0 auto;
    }
+   :deep(.van-field__control--center) {
+     font-size: 16px;
+     font-weight: 500;
+     font-family: PingFang HK;
+     color: #344356;
+   }
    input::placeholder{
      color:#D4DCE7;
      font-size: 14px;
      font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
    }
-   .backIcon {
-     width: 24px;
-     height: 24px;
-   }
+   
    .my-swipe {
       flex: 1;
       .swipe {
@@ -415,6 +441,13 @@ export default {
       .pageThree {
         display: flex;
         flex-direction: column;
+        :deep(.van-cell){
+          input::placeholder{
+            color:#344356;
+            font-size: 16px;
+            font-family: 'PingFang HK';
+          }
+        }
         .select-age {
           width: 100%;
           min-width: 375px;
@@ -506,11 +539,20 @@ export default {
             justify-content: center;
             text-align: center;
             color: #344356;
-            border-radius: 4px;
+            border-radius: 10px;
             margin-top: 20px;
+            >p {
+              font-family: 'PingFang HK', 'Microsoft YaHei', 'Arial';
+              font-style: normal;
+              font-weight: 500;
+              color: #344356;
+            }
             &.current-select-list {
-              background: #088384;
-              color: white;
+              background: #088384 !important;
+              color: white !important;
+              > p{
+                color: white !important;
+              }
             }
           }
           .select-list:nth-of-type(odd) {
